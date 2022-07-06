@@ -148,3 +148,6 @@ Which basically is a placeholder for anyuthing we want, we can relate to any of 
 
 Login form, create new account form, create new todo list
 
+# Tailwind-django
+
+python manage.py tailwind start
