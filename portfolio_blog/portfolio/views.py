@@ -10,6 +10,6 @@ def portfolio(request):
     project = {
         "projects" : projects
     }
-    return render(request, "portfolio/home.html", project)
+    return render(request, "portfolio/portfolio.html", project)
     
     
