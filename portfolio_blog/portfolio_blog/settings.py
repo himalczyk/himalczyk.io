@@ -138,3 +138,6 @@ TAILWIND_CSS_PATH = 'css/dist/styles.css'
 
 # this is fixing the pathing issue for being able to find node installed on pc
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
