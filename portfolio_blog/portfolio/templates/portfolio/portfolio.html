@@ -1,11 +1,10 @@
 {% extends "portfolio/base.html" %}
-{% load static %}
 {% block content %}
 <div class="p-10 flex space-x-4">
     {% for project in projects %}
 <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 relative">
     <a href="#">
-        <img class="rounded-t-lg" src="{% static project.image %}" alt="" />
+        <img class="w-full rounded-t-lg" src="{{project.image.url }}" alt="" />
     </a>
     <div class="p-5">
         <a href="#">
