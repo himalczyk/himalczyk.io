@@ -4,6 +4,7 @@ from django.db import models
 class Tutorial(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    content = models.TextField(default="full content of the article")
     pub_date = models.DateTimeField()
     image = models.ImageField(upload_to="images/")
     
