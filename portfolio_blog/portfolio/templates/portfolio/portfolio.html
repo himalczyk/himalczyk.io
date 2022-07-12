@@ -2,7 +2,7 @@
 {% block content %}
 <div class="p-10 flex space-x-4">
     {% for project in projects %}
-<div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 relative">
+<div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 relative py-2 px-2">
     <a href={{ project.url }} target="_blank">
         <img class="w-full rounded-t-lg" src="{{project.image.url }}" alt="" />
     </a>
