@@ -3,7 +3,7 @@ from . models import Project
 
 # Create your views here.
 def homepage(response):
-    return render(response, "portfolio/base.html", {})
+    return render(response, "portfolio/home.html", {})
 
 def portfolio(request):
     projects = Project.objects.all()
