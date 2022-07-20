@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import render
 from . models import Project
 
@@ -12,4 +13,5 @@ def portfolio(request):
     }
     return render(request, "portfolio/portfolio.html", project)
     
-    
+def about(response):
+    return render(response, "portfolio/about.html", {})
