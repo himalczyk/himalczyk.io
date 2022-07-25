@@ -70,11 +70,3 @@ if __name__ == '__main__':
     youtube_search(args)
   except HttpError as e:
     print('An HTTP error %d occurred:\n%s' % (e.resp.status, e.content))
-    
-videos = scrapetube.get_channel("UC8butISFwT-Wl7EV0hUK0BQ")
-for video in list(videos)[:10]:
-    print(video['videoId'])
-    
-
-    
-YT_BASE_URL = 'https://www.youtube.com/watch?v='
