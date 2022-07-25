@@ -13,4 +13,4 @@ YOUTUBE_CHANNELS = ['UC8butISFwT-Wl7EV0hUK0BQ', 'UCVhQ2NnY5Rskt6UjCUkJ_DA', 'UC4
 #     'Corey Schafer' : 'UCCezIgC97PvUuR4_gbFUs5g'
 # }
 
-YT_BASE_URL = 'https://www.youtube.com/watch?v='
+YT_BASE_URL = 'https://www.youtube.com/embed/'

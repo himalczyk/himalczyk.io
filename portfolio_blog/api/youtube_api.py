@@ -1,72 +1,104 @@
-from config import YT_API_KEY
-
-#!/usr/bin/python
-
-# This sample executes a search request for the specified search term.
-# Sample usage:
-#   python search.py --q=surfing --max-results=10
-# NOTE: To use the sample, you must provide a developer key obtained
-#       in the Google APIs Console. Search for "REPLACE_ME" in this code
-#       to find the correct place to provide that key..
-
 import argparse
-import scrapetube
 
+import scrapetube
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+# from config import YOUTUBE_CHANNELS, YT_BASE_URL
 
 
-# Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
-# tab of
-#   https://cloud.google.com/console
-# Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = YT_API_KEY
-YOUTUBE_API_SERVICE_NAME = 'youtube'
-YOUTUBE_API_VERSION = 'v3'
+class YoutubeApi():
+    """A class to retrieve and create direct video urls from latest published videos for channels"""
+    def __init__(self, yt_base_url: str, yt_channels: list):
+        self.yt_base_url = yt_base_url
+        self.yt_channels = yt_channels
+        
+        
+    def get_youtube_urls(self) -> list:
+        """Handler function to provide the direct youtube urls list"""
+        video_ids = self.get_latest_youtube_channel_videos(self.yt_channels)
+        direct_video_urls = self.create_youtube_direct_video_url(video_ids)
+        
+        return direct_video_urls
 
-def youtube_search(options):
-  youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
-    developerKey=DEVELOPER_KEY)
 
-  # Call the search.list method to retrieve results matching the specified
-  # query term.
-  search_response = youtube.search().list(
-    q=options.q,
-    part='id,snippet',
-    maxResults=options.max_results
-  ).execute()
+    def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
+        """Get latest two video identifiers from pre-defined youtube channel list"""
+        video_ids = []
+        for youtube_channel_id in youtube_channel_ids:
+            channel_videos = scrapetube.get_channel(youtube_channel_id)
+            first_video = next(channel_videos)
+            video_ids.append(first_video['videoId'])
+            
+        return video_ids
 
-  videos = []
-  channels = []
-  playlists = []
 
-  # Add each result to the appropriate list, and then display the lists of
-  # matching videos, channels, and playlists.
-  for search_result in search_response.get('items', []):
-    if search_result['id']['kind'] == 'youtube#video':
-      videos.append('%s (%s)' % (search_result['snippet']['title'],
-                                 search_result['id']['videoId']))
-    elif search_result['id']['kind'] == 'youtube#channel':
-      channels.append('%s (%s)' % (search_result['snippet']['title'],
-                                   search_result['id']['channelId']))
-    elif search_result['id']['kind'] == 'youtube#playlist':
-      playlists.append('%s (%s)' % (search_result['snippet']['title'],
-                                    search_result['id']['playlistId']))
+    def create_youtube_direct_video_url(self, video_ids: list) -> list:
+        """Create direct video urls list with base url and video id"""
+        video_urls = []
+        for video_id in video_ids:
+            video_urls.append(f'{self.yt_base_url}{video_id}')
+        return video_urls
 
-  print('Videos:\n', '\n'.join(videos), '\n')
-  print('Channels:\n', '\n'.join(channels), '\n')
-  print('Playlists:\n', '\n'.join(playlists), '\n')
+# WORKING    
+# yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
+# print(yt_api.get_youtube_urls())
 
 
 
+#FreeCodeCamp
+# videos = scrapetube.get_channel("UC8butISFwT-Wl7EV0hUK0BQ")
+# for video in list(videos)[:10]:
+#     print(video['videoId'])
 
-if __name__ == '__main__':
-  parser = argparse.ArgumentParser()
-  parser.add_argument('--q', help='Search term', default='Freecodecamp')
-  parser.add_argument('--max-results', help='Max results', default=25)
-  args = parser.parse_args()
+#ArjanCodes
+# UCVhQ2NnY5Rskt6UjCUkJ_DA
+# videos = scrapetube.get_channel("UCVhQ2NnY5Rskt6UjCUkJ_DA")
 
-  try:
-    youtube_search(args)
-  except HttpError as e:
-    print('An HTTP error %d occurred:\n%s' % (e.resp.status, e.content))
+#TechWithTim
+# UC4JX40jDee_tINbkjycV4Sg
+# videos = scrapetube.get_channel("UC4JX40jDee_tINbkjycV4Sg")
+
+#Corey Schafer
+# UCCezIgC97PvUuR4_gbFUs5g
+# videos = scrapetube.get_channel("UCCezIgC97PvUuR4_gbFUs5g")
+# for video in list(videos)[:10]:
+#     print(video['videoId'])
+
+# VIDEO_URL = ''
+# YT_BASE_URL = 'https://www.youtube.com/watch?v='
+# YT_VIDEO_URL = f'{YT_BASE_URL}{VIDEO_URL}'
+
+# DEVELOPER_KEY = YT_API_KEY
+# YOUTUBE_API_SERVICE_NAME = 'youtube'
+# YOUTUBE_API_VERSION = 'v3'
+
+
+# def youtube_search_channel_details(channel_name):
+#     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
+#                     developerKey=DEVELOPER_KEY)
+
+#     # Call the search.list method to retrieve results matching the specified
+#     # query term.
+#     search_response = youtube.search().list(
+#         q=channel_name,
+#         part='id,snippet',
+#     ).execute()
+
+#     channel = {}
+
+#     # Add each result to the appropriate list, and then display the lists of
+#     # matching videos, channels, and playlists.
+#     for search_result in search_response.get('items', []):
+#         if search_result['id']['kind'] == 'youtube#channel':
+#             channel['title'] = search_result['snippet']['title']
+#             channel['channel_id'] = search_result['id']['channelId']
+                                         
+#     return channel
+
+
+# if __name__ == '__main__':
+
+#     try:
+#         print(youtube_search_channel_details('Corey Schafer'))
+#     except HttpError as e:
+#         print('An HTTP error %d occurred:\n%s' % (e.resp.status, e.content))
