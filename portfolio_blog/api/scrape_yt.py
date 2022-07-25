@@ -38,9 +38,10 @@ class YoutubeApi():
         for video_id in video_ids:
             video_urls.append(f'{self.yt_base_url}{video_id}')
         return video_urls
-        
-yt_api = YoutubeApi(YT_BASE_URL)
-print(yt_api.get_youtube_urls())
+
+# WORKING    
+# yt_api = YoutubeApi(YT_BASE_URL)
+# print(yt_api.get_youtube_urls())
 
 
 
