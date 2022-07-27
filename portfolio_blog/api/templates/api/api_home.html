@@ -7,6 +7,12 @@
                 src="{{ video_url }}">
             </iframe>
         </div>
+
     {% endfor %}
+        <div class="p-4 w-180 h-90 text-center bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-indigo-500">
+            <a href={{uri}} target="_blank">
+                <img src= "{{ image }}"/>
+            </a>
+        </div>
 </div>
 {% endblock %}
