@@ -1,0 +1,11 @@
+{% extends "api/api_home.html" %}
+{% block detail %}
+<div class="grid grid-cols-2 gap-2">
+    <div class="w-180 h-90 text-center bg-white rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-indigo-500">
+    <p class="mb-5 text-left text-2xl text-sky-500 dark:text-sky-400 hover:text-white"><code><a href={{ uri }}>{{ alt }}</code></p></a>
+        <a href={{uri}} target="_blank">
+            <img src= "{{ image }}" alt="{{ alt }}"/>
+        </a>
+    </div>
+</div>
+{% endblock %}

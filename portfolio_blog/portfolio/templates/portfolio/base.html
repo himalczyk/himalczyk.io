@@ -6,7 +6,6 @@
 	<style>
 		footer{
 			position:fixed;
-			bottom:0;
 		}
 	</style>
 	<link rel="icon" href="{% static 'img/favicon-16x16.png' %}">
@@ -16,7 +15,7 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge"> {% endcomment %}
 		{% tailwind_css %}
 	</head>
-    <body class="bg-cover" style="background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
+    <body class="min-h-screen bg-cover" style="background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
 		<header>
 			<nav class="flex items-center justify-between flex-wrap bg-slate-800 p-6">
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -52,15 +51,15 @@
 			</nav>
 		</header>
 		{% comment %} class="min-h-[calc(100vh-76px)]" {% endcomment %}
-		<main>
-			<div id="container", name="container", class="container mx-auto pt-8">
+		<main class="h-max">
+			<div id="container", name="container", class="min-h-screen container mx-auto pt-8 relative">
 				<div>
 				{% block content %}
 				{% endblock %}
 				</div>
 			</div>
 		</main>
-		<footer class="w-full text-center text-white bg-slate-800">
+		<footer class="w-full text-center text-white bg-slate-800 absolute">
 		<div class="container mx-auto">
 			<div class="flex justify-center py-4">
 			{% comment %} <a href="#!" class="mr-9 text-gray-400 hover:text-white">
