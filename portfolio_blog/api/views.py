@@ -19,9 +19,11 @@ def rp_article_index(response):
     rp_post_uri = scrape_rp_image_uri()[1]
     rp_post_image = str(scrape_rp_image_uri()[0])
     rp_post_image_alt = str(scrape_rp_image_uri()[2])
+    rp_post_description = str(scrape_rp_image_uri()[3])
     blog_post = {
         "image" : rp_post_image,
         "uri" : rp_post_uri,
         "alt" : rp_post_image_alt,
+        "description" : rp_post_description,
     }
     return render(response, "api/rp_article_index.html", blog_post)

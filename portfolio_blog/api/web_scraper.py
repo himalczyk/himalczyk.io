@@ -3,6 +3,8 @@
 from bs4 import BeautifulSoup
 import requests
 from api.config import RP_BASE_URL
+# testing
+# from config import RP_BASE_URL
 
 page = requests.get(RP_BASE_URL)
 
@@ -12,6 +14,10 @@ def scrape_rp_image_uri():
     results = soup.find("div", class_="card border-0")
     image = results.find("img")["src"]
     uri = results.find("a")['href']
-    alt = results.find("img")["alt"]
     uri = RP_BASE_URL + uri
-    return image, uri, alt
+    alt = results.find("img")["alt"]
+    paragraph = results.find("p").text.strip()
+    return image, uri, alt, paragraph
+
+soup = BeautifulSoup(page.content, "html.parser")
+results = soup.find("div", class_="card border-0")
