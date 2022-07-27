@@ -4,3 +4,4 @@
   - YouTube API v3
   - Scrapetube
   - Beatiful Soup
+  - Requests
