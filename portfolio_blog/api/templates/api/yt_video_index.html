@@ -1,13 +1,13 @@
 {% extends "api/api_home.html" %}
-{% block detail %}
-<div class="grid grid-cols-2 gap-2">
+{% block content %}
+{% include "api/redirect_buttons.html"%}
+    <div class="grid grid-cols-2 gap-2">
     {% for video_url in yt_videos %}
         <div class="w-max h-90 text-center bg-white rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-indigo-500">
             <iframe width="450" height="315"
                 src="{{ video_url }}">
             </iframe>
         </div>
-
     {% endfor %}
 </div>
 {% endblock %}
