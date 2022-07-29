@@ -3,12 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<style>
-		footer{
-			bottom: 0;
-			position:fixed;
-		}
-	</style>
 	<link rel="icon" href="{% static 'img/favicon-16x16.png' %}">
     <title>Himalczyk</title>
 		{% comment %} <meta charset="UTF-8">
@@ -20,7 +14,7 @@
     {% comment %} <body class="bg-gradient-to-b from-gray-700 via-gray-900 to-black"> {% endcomment %}
 	{% comment %} custom {% endcomment %}
     {% comment %} <body class="bg-gradient-to-b from-slate-800 via-gray-900 to-black"> {% endcomment %}
-    <body class="bg-slate-900">
+    <body class="bg-slate-900 h-full">
 	{% comment %} space {% endcomment %}
     {% comment %} <body class="bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r"> {% endcomment %}
 	{% comment %} custom2 {% endcomment %}
@@ -28,7 +22,7 @@
 	{% comment %} image background {% endcomment %}
     {% comment %} <body class="min-h-screen bg-cover" style="background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)"> {% endcomment %}
 		<header>
-			<nav class="flex items-center justify-between flex-wrap bg-slate-800 p-6 border-gray-200">
+			<nav class="w-full flex items-center justify-between flex-wrap bg-slate-800 p-6 border-gray-200">
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
 				<a href="/">
 					<span class="font-semibold text-xl tracking-tight">Himalczyk</span>
@@ -62,7 +56,7 @@
 			</nav>
 		</header>
 		{% comment %} class="min-h-[calc(100vh-76px)]" {% endcomment %}
-		<main class="h-max">
+		<main class="">
 			<div id="container", name="container", class="container mx-auto pt-8">
 				<div>
 				{% block content %}
@@ -70,7 +64,7 @@
 				</div>
 			</div>
 		</main>
-		<footer class="w-full text-center text-white bg-slate-800">
+		<footer class="w-full text-center text-white bg-slate-800 bottom-0 fixed">
 		<div class="container mx-auto">
 			<div class="flex justify-center py-4">
 			{% comment %} <a href="#!" class="mr-9 text-gray-400 hover:text-white">
