@@ -41,16 +41,23 @@ class YoutubeApi():
             video_urls.append(f'{self.yt_base_url}{video_id}')
         return video_urls
 
+
+# YOUTUBE_CHANNELS = ['UC8butISFwT-Wl7EV0hUK0BQ', 'UCVhQ2NnY5Rskt6UjCUkJ_DA', 'UC4JX40jDee_tINbkjycV4Sg', 'UCCezIgC97PvUuR4_gbFUs5g']
+
+# for youtube_channel_id in YOUTUBE_CHANNELS:
+#     channel_videos = scrapetube.get_channel(youtube_channel_id)
+#     first_video = next(channel_videos)
+#     print(first_video)
+
 # WORKING    
 # yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
 # print(yt_api.get_youtube_urls())
 
 
-
 #FreeCodeCamp
-# videos = scrapetube.get_channel("UC8butISFwT-Wl7EV0hUK0BQ")
-# for video in list(videos)[:10]:
-#     print(video['videoId'])
+# video = scrapetube.get_channel("UC8butISFwT-Wl7EV0hUK0BQ")
+# first_video = next(video)
+
 
 #ArjanCodes
 # UCVhQ2NnY5Rskt6UjCUkJ_DA
