@@ -3,8 +3,6 @@
 from bs4 import BeautifulSoup
 import requests
 from api.config import RP_BASE_URL
-# testing
-# from config import RP_BASE_URL, DJANGO_CHAT_PODCAST_PAGE
 
 page = requests.get(RP_BASE_URL)
 rp_podcast_page = requests.get(RP_BASE_URL + '/podcasts/rpp/')

@@ -5,7 +5,6 @@ import argparse
 import scrapetube
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-# from config import YOUTUBE_CHANNELS, YT_BASE_URL
 
 
 class YoutubeApi():
