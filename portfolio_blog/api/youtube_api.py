@@ -1,3 +1,5 @@
+"""Module that is fetching the latest videos from pre-defined followed channel ids"""
+
 import argparse
 
 import scrapetube

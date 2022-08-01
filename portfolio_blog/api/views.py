@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from api.youtube_api import YoutubeApi
 from api.config import YT_BASE_URL, YOUTUBE_CHANNELS, RP_PODCAST_BASE_URL
-from api.web_scraper import scrape_rp_image_uri, scrape_rp_podcast, scrape_latest_rp_episode
+from api.web_scraper import scrape_rp_latest_tutorial, scrape_rp_podcast, scrape_latest_rp_episode
 
 # Create your views here.
 def api_home(response):
-    rp_post_uri = scrape_rp_image_uri()[1]
-    rp_post_image = str(scrape_rp_image_uri()[0])
-    rp_post_image_alt = str(scrape_rp_image_uri()[2])
-    rp_post_description = str(scrape_rp_image_uri()[3])
+    rp_post_uri = scrape_rp_latest_tutorial()[1]
+    rp_post_image = str(scrape_rp_latest_tutorial()[0])
+    rp_post_image_alt = str(scrape_rp_latest_tutorial()[2])
+    rp_post_description = str(scrape_rp_latest_tutorial()[3])
     blog_post = {
         "image" : rp_post_image,
         "uri" : rp_post_uri,

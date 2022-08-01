@@ -7,7 +7,6 @@ YT_BASE_URL = 'https://www.youtube.com/embed/'
 
 RP_BASE_URL = 'https://realpython.com'
 RP_PODCAST_BASE_URL = 'https://realpython.com/podcasts/rpp/'
-DJANGO_CHAT_PODCAST_PAGE = 'https://djangochat.com/'
 
 
 YOUTUBE_CHANNELS = ['UC8butISFwT-Wl7EV0hUK0BQ', 'UCVhQ2NnY5Rskt6UjCUkJ_DA', 'UC4JX40jDee_tINbkjycV4Sg', 'UCCezIgC97PvUuR4_gbFUs5g']
