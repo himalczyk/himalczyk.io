@@ -1,8 +1,7 @@
 import pytest
 from django.test import TestCase
-from tutorial.models import Tutorial
 from django.urls import reverse
-from .conftest import ConfTest
+
 
 class RouteTest(TestCase):
     
