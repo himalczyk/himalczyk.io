@@ -27,7 +27,7 @@ def scrape_rp_podcast():
     image = podcast_image["src"]
     return image
 
-def scrape_latest_rp_episode():
+def scrape_latest_rp_podcast_episode():
     """Scraping the latest rp podcast episode title and uri"""
     soup = BeautifulSoup(rp_podcast_page.content, "html.parser")
     last_ep = soup.find("div", class_="my-5")

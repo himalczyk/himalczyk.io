@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from api.youtube_api import YoutubeApi
 from api.config import YT_BASE_URL, YOUTUBE_CHANNELS, RP_PODCAST_BASE_URL
-from api.web_scraper import scrape_rp_latest_tutorial, scrape_rp_podcast, scrape_latest_rp_episode
+from api.web_scraper import scrape_rp_latest_tutorial, scrape_rp_podcast, scrape_latest_rp_podcast_episode
 
 
 def api_home(response):
@@ -32,10 +32,10 @@ def yt_video_index(response):
 def podcasts(response):
     """Podcasts sub page in followed sources content page"""
     rp_podcast = scrape_rp_podcast()
-    latest_episode_title = scrape_latest_rp_episode()[0]
-    latest_episode_url = scrape_latest_rp_episode()[1]
+    latest_episode_title = scrape_latest_rp_podcast_episode()[0]
+    latest_episode_url = scrape_latest_rp_podcast_episode()[1]
     # not used right now
-    latest_episode_description = scrape_latest_rp_episode()[2]
+    latest_episode_description = scrape_latest_rp_podcast_episode()[2]
     podcast = {
         "rp_podcast" : rp_podcast,
         "rp_podcast_base_url" : RP_PODCAST_BASE_URL,
