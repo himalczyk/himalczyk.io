@@ -5,3 +5,4 @@
   - Scrapetube
   - Beatiful Soup
   - Requests
+  - PyTest
