@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 import requests
 from api.config import RP_BASE_URL
+# testing
 # from config import RP_BASE_URL
 
 page = requests.get(RP_BASE_URL)
@@ -16,9 +17,12 @@ def scrape_rp_latest_tutorial():
     image = results.find("img")["src"]
     uri = results.find("a")["href"]
     uri = RP_BASE_URL + uri
-    alt = results.find("img")["alt"]
+    # keep it as a placeholder
+    # alt = results.find("img")["alt"]
+    title = results.find("h2").text.strip()
+    print(title)
     description = results.find("p").text.strip()
-    return image, uri, alt, description
+    return image, uri, title, description
 
 def scrape_rp_podcast():
     """Scraping the main rp podcast webpage"""

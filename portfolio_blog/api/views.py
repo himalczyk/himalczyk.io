@@ -8,12 +8,12 @@ def api_home(response):
     """Followed sources content main page -> Real Python Article sub view"""
     rp_post_uri = scrape_rp_latest_tutorial()[1]
     rp_post_image = str(scrape_rp_latest_tutorial()[0])
-    rp_post_image_alt = str(scrape_rp_latest_tutorial()[2])
+    rp_post_title = str(scrape_rp_latest_tutorial()[2])
     rp_post_description = str(scrape_rp_latest_tutorial()[3])
     blog_post = {
         "image" : rp_post_image,
         "uri" : rp_post_uri,
-        "alt" : rp_post_image_alt,
+        "title" : rp_post_title,
         "description" : rp_post_description,
     }
     return render(response, "api/api_home.html", blog_post)
