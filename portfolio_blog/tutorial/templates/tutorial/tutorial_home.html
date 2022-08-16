@@ -1,12 +1,16 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
 {% for tutorial in tutorials %}
-<a href="{% url 'tutorial_content' tutorial.pk %}" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-sky-500 dark:bg-gray-800 dark:hover:bg-gray-700 py-2 mx-10">
-    <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg mx-2" src="{{tutorial.image.url }}" alt="">
-    <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-200 dark:text-gray-200">{{tutorial.title}}</h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{tutorial.description}}</p>
-        <p class="text-gray-200">{{tutorial.pub_date}}</p>
+<a href="{% url 'tutorial_content' tutorial.pk %}">
+    <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-sky-500 dark:bg-gray-800 dark:hover:bg-gray-700 py-2 mx-10">
+        {% comment %} <div class="w-auto"> {% endcomment %}
+            <img class="w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg mx-2" src="{{tutorial.image.url }}" alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal text-justify">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-200 dark:text-gray-200">{{tutorial.title}}</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{tutorial.description}}</p>
+                <p class="text-gray-200">{{tutorial.pub_date}}</p>
+            </div>
+        {% comment %} </div> {% endcomment %}
     </div>
 </a>
 {% endfor %}
