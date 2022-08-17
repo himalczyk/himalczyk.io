@@ -20,7 +20,6 @@ def scrape_rp_latest_tutorial():
     # keep it as a placeholder
     # alt = results.find("img")["alt"]
     title = results.find("h2").text.strip()
-    print(title)
     description = results.find("p").text.strip()
     return image, uri, title, description
 

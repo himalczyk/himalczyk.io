@@ -1,11 +1,15 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/tutorial_content.css' %}">
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 
 <div class="relative p-4 mx-4 w-auto text-center bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <h5 class="mb-5 text-3xl font-bold text-gray-900 dark:text-gray-200">{{ tutorial.title }}</h5>
-    <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">{{ tutorial.description }}</p>
+    <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-200">{{ tutorial.description }}</p>
     <div class="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-        <div class="text-gray-200 text-justify">{{ tutorial.content }}</div>
+        
+        <div class="text-gray-200 text-justify">{{ tutorial.content|safe }}</div>
     </div>
         <div class="absolute bottom-0 right-0 text-gray-200 mr-8">{{ tutorial.pub_date }}</div>
 </div>
