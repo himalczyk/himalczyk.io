@@ -5,11 +5,11 @@
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 
 {% comment %} <div class="relative flex flex-col p-4 mx-4 w-auto text-center rounded-xl shadow-md bg-slate-400/25 dark:bg-slate-400/25 sm:p-8"> {% endcomment %}
-<div class="relative flex flex-col p-4 mx-4 w-auto text-center sm:p-8">
+<div class="relative flex flex-col p-4 mx-4 w-3/5 sm:p-8">
 {% comment %} <div class="relative p-4 mx-4 w-auto text-center rounded-xl shadow-md bg-slate-500/25 dark:bg-slate-500/25 sm:p-8"> {% endcomment %}
     <h5 class="mb-10 text-3xl font-bold text-slate-200 dark:text-slate-200">{{ tutorial.title }}</h5>
     <p class="mb-10 text-base text-slate-200 sm:text-lg dark:text-slate-200">{{ tutorial.description }}</p>
-    <div class="text-justify">
+    <div class="text-left">
         <div class="text-slate-200 text-base sm:text-lg">{{ tutorial.content|safe }}</div>
     </div>
         <div class="mb-2 absolute bottom-0 right-0 text-gray-200 mr-8">{{ tutorial.pub_date }}</div>
