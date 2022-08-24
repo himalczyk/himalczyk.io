@@ -1,11 +1,11 @@
 """Module that is fetching the latest videos from pre-defined followed channel ids"""
 
-import argparse
 
-import scrapetube
+import requests
+
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-
+from api.config import YT_API_KEY
 
 class YoutubeApi():
     """A class to retrieve and create direct video urls from latest published videos for channels"""
@@ -26,9 +26,10 @@ class YoutubeApi():
         """Get latest two video identifiers from pre-defined youtube channel list"""
         video_ids = []
         for youtube_channel_id in youtube_channel_ids:
-            channel_videos = scrapetube.get_channel(youtube_channel_id)
-            first_video = next(channel_videos)
-            video_ids.append(first_video['videoId'])
+            yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
+            response = yt_channel_video.json()
+            for i in response['items']:
+                video_ids.append(i['id']['videoId'])
             
         return video_ids
 
@@ -43,10 +44,24 @@ class YoutubeApi():
 
 # YOUTUBE_CHANNELS = ['UC8butISFwT-Wl7EV0hUK0BQ', 'UCVhQ2NnY5Rskt6UjCUkJ_DA', 'UC4JX40jDee_tINbkjycV4Sg', 'UCCezIgC97PvUuR4_gbFUs5g']
 
+# https://www.googleapis.com/youtube/v3/search?key={your_key_here}&channelId={channel_id_here}&part=snippet,id&order=date&maxResults=20
+
+# yt_channel_videos = requests.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyC8ZB7s9cjNFT4zwUTSxvuulhwEZJPNuHI&channelId=UC8butISFwT-Wl7EV0hUK0BQ&part=snippet,id&order=date&maxResults=1')
+
+# response = yt_channel_videos.json()
+# video_urls = []
 # for youtube_channel_id in YOUTUBE_CHANNELS:
-#     channel_videos = scrapetube.get_channel(youtube_channel_id)
-#     first_video = next(channel_videos)
-#     print(first_video)
+#     yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key=AIzaSyC8ZB7s9cjNFT4zwUTSxvuulhwEZJPNuHI&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
+#     response = yt_channel_video.json()
+#     for i in response['items']:
+#         video_urls.append(i['id']['videoId'])
+# print(video_urls)
+# for i in response['items']:
+#     video_urls.append(i['id']['videoId'])
+# print(video_urls)
+# for youtube_channel_id in YOUTUBE_CHANNELS:
+#     channel_videos = scrapetube.get_channel(channel_id = youtube_channel_id)
+#     print(next(channel_videos))
 
 # WORKING    
 # yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
