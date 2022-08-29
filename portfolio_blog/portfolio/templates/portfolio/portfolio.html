@@ -1,6 +1,6 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
-<div class="py-5 mx-10 flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 justify-center">
+<div class="py-5 mx-10 flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
     {% for project in projects %}
 <div class="flex flex-1 max-w-sm rounded-lg border border-sky-500 shadow-md bg-gray-800 dark:bg-gray-800 dark:border-sky-500 relative py-2 px-2 hover:bg-gray-700 dark:hover:bg-gray-700">
     <a href={{ project.url }} target="_blank">
