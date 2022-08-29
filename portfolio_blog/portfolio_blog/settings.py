@@ -114,10 +114,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join('static'), )
 STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles"
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_ALLOW_ALL_ORIGINS = True
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -127,7 +124,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-# TAILWIND_CSS_PATH = 'css/dist/styles.css'
+TAILWIND_CSS_PATH = 'css/dist/styles.css'
 
 # this is fixing the pathing issue for being able to find node installed on pc
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
