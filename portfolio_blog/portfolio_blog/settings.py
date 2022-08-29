@@ -26,8 +26,8 @@ DEBUG = False
 # SECURE_HSTS_SECONDS = 3600
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://himalczyk.herokuapp.com/']
-ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io', 'https://himalczyk.herokuapp.com/', '*']
+# CSRF_TRUSTED_ORIGINS = ['']
+ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io', '', '*']
 # dev
 # SECRET_KEY=os.getenv('SECRET_KEY_DEV')
 # DEBUG = True
@@ -114,7 +114,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join('static'), )
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -131,9 +131,6 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-import django_on_heroku
-django_on_heroku.settings(locals())
 
 LOGGING = {
     'version': 1,
