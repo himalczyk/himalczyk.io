@@ -127,7 +127,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-TAILWIND_CSS_PATH = 'css/dist/styles.css'
+# TAILWIND_CSS_PATH = 'css/dist/styles.css'
 
 # this is fixing the pathing issue for being able to find node installed on pc
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
