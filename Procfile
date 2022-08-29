@@ -1,1 +1,1 @@
-web: python portfolio_blog/manage.py runserver 0.0.0.0:5000
+web: python portfolio_blog/manage.py runserver 0.0.0.0:$PORT
