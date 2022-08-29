@@ -1,0 +1,14 @@
+pre .com, code .com { color: #abf7b1; font-style: italic; }
+pre.prettyprint {
+	/* background-color: #18212F; */
+	background-color: #1E293B;
+	/* background-color: #0F172A */
+	/* background-color: #61748D; */
+	/* background-color: #1D283A; */
+	/* background-color: #0F172A; */
+	border-color: lightslategray;
+	/* border-color: #0183C6; */
+	border-width: 0.25px;
+	width: max-content;
+	max-width: fit-content;
+}
