@@ -18,19 +18,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING
 load_dotenv()
-# SECRET_KEY=os.getenv('SECRET_KEY')
-# DEBUG = False
-# SECURITY
-# SECURE_SSL_REDIRECT = True
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-# SECURE_HSTS_SECONDS = 3600
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io']
-SECRET_KEY=os.getenv('SECRET_KEY_DEV')
-DEBUG = True
-ALLOWED_HOSTS = []
+SECRET_KEY=os.getenv('SECRET_KEY')
+DEBUG = False
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_SECONDS = 3600
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io']
+# dev
+# SECRET_KEY=os.getenv('SECRET_KEY_DEV')
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
