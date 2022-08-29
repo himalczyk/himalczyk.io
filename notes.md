@@ -151,3 +151,7 @@ Login form, create new account form, create new todo list
 # Tailwind-django
 
 python manage.py tailwind start
+
+# Get heroku logs
+
+heroku logs -t -a himalczyk
