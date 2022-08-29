@@ -20,13 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 SECRET_KEY=os.getenv('SECRET_KEY')
 DEBUG = False
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_SECONDS = 3600
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_SECONDS = 3600
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io', 'https://himalczyk.herokuapp.com/']
 # dev
 # SECRET_KEY=os.getenv('SECRET_KEY_DEV')
