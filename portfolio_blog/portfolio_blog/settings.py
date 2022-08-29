@@ -26,7 +26,7 @@ SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_SECONDS = 3600
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io']
+ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io', 'https://himalczyk.herokuapp.com/']
 # dev
 # SECRET_KEY=os.getenv('SECRET_KEY_DEV')
 # DEBUG = True
