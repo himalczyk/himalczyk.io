@@ -152,6 +152,32 @@ Login form, create new account form, create new todo list
 
 python manage.py tailwind start
 
-# Get heroku logs
+# Heroku notes
+
+## Get tailed logs
 
 heroku logs -t -a himalczyk
+
+## Procfile
+
+https://vibhurishi.blogspot.com/2013/02/heroku-error-h14-with-django.html
+
+## Set secret key on heroku server
+
+heroku config:set SECRET_KEY="YOUR_SECRET_KEY_VALUE"
+
+## Deploy a build
+
+git push heroku main
+
+## Run console bash on heroku server
+
+heroku run bash
+
+## Check running web apps on heroku
+
+heroku ps:scale web=1
+
+## Run migrations on heroku
+
+heroku run python portfolio_blog/manage.py migrate
