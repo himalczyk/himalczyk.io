@@ -111,7 +111,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "static/"
+STATIC_URL = "staticfiles/"
 STATICFILES_DIRS = [BASE_DIR / "static",
                     BASE_DIR / 'media'
                 ]  
@@ -134,7 +134,10 @@ INTERNAL_IPS = [
 TAILWIND_CSS_PATH = 'css/dist/styles.css'
 
 # this is fixing the pathing issue for being able to find node installed on pc
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+# DEV
+# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+# PROD
+NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
