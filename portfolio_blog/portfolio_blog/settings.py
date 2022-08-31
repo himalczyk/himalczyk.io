@@ -26,7 +26,7 @@ DEBUG = False
 # SECURE_HSTS_SECONDS = 3600
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
-# CSRF_TRUSTED_ORIGINS = ['']
+CSRF_TRUSTED_ORIGINS = ['*']
 ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io', '', '*']
 # dev
 # SECRET_KEY=os.getenv('SECRET_KEY_DEV')
