@@ -1,8 +1,8 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
 {% include "api/redirect_buttons.html"%}
-	<div class="grid grid-cols-2 gap-2 mx-10">
-		<div class="w-180 h-90 text-center bg-gray-800 rounded-lg border shadow-md dark:bg-gray-800 dark:border-sky-500 border-sky-500">
+	<div class="flex flex-row gap-2 mx-10">
+		<div class="w-auto h-full md:w-1/2 text-center bg-gray-800 rounded-lg border shadow-md dark:bg-gray-800 dark:border-sky-500 border-sky-500">
 			<h2 class="py-2 mx-4 text-left text-2xl text-sky-400 dark:text-sky-400 hover:text-white font-mono"><a href={{ uri }} target="_blank">{{ title }}</h2></a>
 			<div class="mx-4">
 				<a href={{uri}} target="_blank">

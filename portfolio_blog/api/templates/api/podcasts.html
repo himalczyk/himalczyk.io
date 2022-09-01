@@ -1,8 +1,8 @@
 {% extends "api/api_home.html" %}
 {% block content %}
 {% include "api/redirect_buttons.html"%}
-    <div class="grid grid-cols-2 gap-2 mx-10">
-		<div class="w-180 h-90 text-center bg-gray-800 rounded-lg border shadow-md dark:bg-gray-800 border-sky-500 dark:border-sky-500">
+    <div class="flex flex-row gap-2 mx-10">
+		<div class="w-auto h-full md:w-1/2 text-center bg-gray-800 rounded-lg border shadow-md dark:bg-gray-800 border-sky-500 dark:border-sky-500">
          <a href={{rp_podcast_base_url}} target="_blank">
 			<h2 class="py-2 mx-4 text-left text-2xl text-sky-400 dark:text-sky-400 hover:text-white font-mono">Real Python Podcast</h2>
             <div class="mx-4">
