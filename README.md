@@ -20,7 +20,7 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
   - Postgres database on Heroku
 
 Additional resources:
-  - Notes about the whole process in notes.md file :)
+  - Notes about the whole process in <a href="https://github.com/himalczyk/himalczyk.io/blob/main/README.md" target="_blank">How to use</a> file :)
 
 ### Resources
 
