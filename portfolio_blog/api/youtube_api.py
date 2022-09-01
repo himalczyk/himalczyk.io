@@ -5,7 +5,7 @@ import requests
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-# from api.config import YT_API_KEY
+# from api.config import YT_API_KEY x
 import os
 
 YT_API_KEY = os.getenv('YT_API_KEY')
