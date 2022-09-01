@@ -5,10 +5,10 @@ import requests
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from api.config import YT_API_KEY
+# from api.config import YT_API_KEY
 import os
 
-# YT_API_KEY = os.getenv('YT_API_KEY')
+YT_API_KEY = os.getenv('YT_API_KEY')
 
 class YoutubeApi():
     """A class to retrieve and create direct video urls from latest published videos for channels"""
