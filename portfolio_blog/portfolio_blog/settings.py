@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['himalczyk.io', 'https://himalczyk.io', '', '*']
 # dev
 # SECRET_KEY=os.getenv('SECRET_KEY_DEV')
 # DEBUG = True
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
