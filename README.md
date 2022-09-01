@@ -24,11 +24,16 @@ Additional resources:
 
 ### Resources
 
-[Django docs](https://docs.djangoproject.com/en/4.1/)
-[django-tailwind](https://django-tailwind.readthedocs.io/en/latest/installation.html)
-[TailwindCSS docs](https://tailwindcss.com/docs/installation)
-[Whitenoise](http://whitenoise.evans.io/en/stable/django.html)
-[Django Heroku](https://devcenter.heroku.com/categories/working-with-django)
+[Django docs](https://docs.djangoproject.com/en/4.1/) 
+ 
+[django-tailwind](https://django-tailwind.readthedocs.io/en/latest/installation.html) 
+ 
+[TailwindCSS docs](https://tailwindcss.com/docs/installation) 
+ 
+[Whitenoise](http://whitenoise.evans.io/en/stable/django.html) 
+ 
+[Django Heroku](https://devcenter.heroku.com/categories/working-with-django) 
+
 [django-on-heroku](https://pypi.org/project/django-on-heroku/)
 
 ## Code quality
