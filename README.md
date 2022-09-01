@@ -12,7 +12,8 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
   - Url pathing
   - Testing in Django using PyTest
   - Staticfiles (local and production) with Whitenoise
-  - Tailwind template design and config
+  - TailwindCSS template design and config
+  - Responsive design with Tailwind
   - Logging in Django
   - Connecting to API
   - Web scraping
