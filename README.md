@@ -22,6 +22,15 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
 Additional resources:
   - Notes about the whole process in notes.md file :)
 
+### Resources
+
+[Django docs](https://docs.djangoproject.com/en/4.1/)
+[django-tailwind](https://django-tailwind.readthedocs.io/en/latest/installation.html)
+[TailwindCSS docs](https://tailwindcss.com/docs/installation)
+[Whitenoise](http://whitenoise.evans.io/en/stable/django.html)
+[Django Heroku](https://devcenter.heroku.com/categories/working-with-django)
+[django-on-heroku](https://pypi.org/project/django-on-heroku/)
+
 ## Code quality
 
 I've done the best to my ability to write clean, understandable code following some of the SOLID principles, the PEP8 style guide and the overall Django best practices.
