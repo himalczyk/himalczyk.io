@@ -24,7 +24,7 @@ Additional resources:
 
 ## Code quality
 
-I've done the best to my ability to write clean, understandable code following some of the SOLID principles, the PEP8 style guide. 
+I've done the best to my ability to write clean, understandable code following some of the SOLID principles, the PEP8 style guide and the overall Django best practices.
 
 You can find some of those here too :)
 
