@@ -22,7 +22,10 @@ def api_home(response):
 def yt_video_index(response):
     """Videos sub-page in followed sources content page"""
     yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
-    yt_videos = yt_api.get_youtube_urls()
+    try:
+        yt_videos = yt_api.get_youtube_urls()
+    except:
+        yt_videos = "WARNING"
     video = {
         "yt_videos" : yt_videos,
     }

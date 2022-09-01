@@ -135,9 +135,9 @@ TAILWIND_CSS_PATH = 'css/dist/styles.css'
 
 # this is fixing the pathing issue for being able to find node installed on pc
 # DEV
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 # PROD
-# NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
+NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
