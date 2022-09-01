@@ -2,7 +2,7 @@
 
 Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindCSS and Heroku deployment!
 
-<a href="https://himalczyk.herokuapp.com/" target="_blank">Check out my portfolio webisite!</a>
+<a href="https://www.markdownguide.org" target="_blank">Check out my portfolio webisite!</a>
 
 ## What you can find here?
 
