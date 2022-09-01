@@ -18,6 +18,7 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
   - Connecting to API
   - Web scraping
   - Deployment config to Heroku (with django-on-heroku and Whitenoise)
+  - Heroku bash commands in the <a href="https://github.com/himalczyk/himalczyk.io/blob/main/notes.md" target="_blank">notes.md</a>
   - Postgres database on Heroku
 
 Additional resources:
