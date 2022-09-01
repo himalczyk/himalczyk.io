@@ -133,7 +133,7 @@ INTERNAL_IPS = [
 
 TAILWIND_CSS_PATH = 'css/dist/styles.css'
 
-# this is fixing the pathing issue for being able to find node installed on pc
+# this is fixing the pathing issue for being able to find node installed on pc and heroku
 # DEV
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 # PROD
