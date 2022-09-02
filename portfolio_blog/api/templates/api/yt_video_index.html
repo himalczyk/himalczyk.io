@@ -13,10 +13,12 @@
             </div>
     {% else %}
     {% for video_url in yt_videos %}
-        <div class="flex w-auto h-1/3 text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
-            <iframe class="md:w-{450} md:h-{315}"
-                src="{{ video_url }}">
-            </iframe>
+        <div class="flex text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
+            <dev class="flex md:h-80 md:w-96">
+                <iframe class=""
+                    src="{{ video_url }}">
+                </iframe>
+            </dev>
         </div>
     {% endfor %}
     {% endif %}
