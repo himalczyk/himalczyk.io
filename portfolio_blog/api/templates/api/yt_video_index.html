@@ -13,8 +13,8 @@
             </div>
     {% else %}
     {% for video_url in yt_videos %}
-        <div class="flex w-max h-1/3 text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
-            <iframe class="flex flex-1"
+        <div class="flex w-max h-max text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
+            <iframe class="flex" width="450" height="315"
                 src="{{ video_url }}">
             </iframe>
         </div>
