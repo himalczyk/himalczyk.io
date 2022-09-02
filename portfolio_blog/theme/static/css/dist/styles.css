@@ -947,18 +947,18 @@ select {
   width: auto;
 }
 
+.w-max {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .w-3\.5 {
   width: 0.875rem;
 }
 
 .w-4 {
   width: 1rem;
-}
-
-.w-max {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
 }
 
 .w-10 {
@@ -1655,20 +1655,12 @@ select {
     height: auto;
   }
 
-  .md\:h-80 {
-    height: 20rem;
-  }
-
   .md\:w-1\/2 {
     width: 50%;
   }
 
   .md\:w-48 {
     width: 12rem;
-  }
-
-  .md\:w-96 {
-    width: 24rem;
   }
 
   .md\:max-w-xl {
