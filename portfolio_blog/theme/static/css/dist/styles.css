@@ -1220,11 +1220,6 @@ select {
   padding-bottom: 0.25rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
 .pt-4 {
   padding-top: 1rem;
 }
@@ -1633,10 +1628,6 @@ select {
 @media (min-width: 640px) {
   .sm\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .sm\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .sm\:gap-8 {
