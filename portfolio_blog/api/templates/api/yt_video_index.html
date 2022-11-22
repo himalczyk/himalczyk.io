@@ -15,7 +15,7 @@
     {% for video_url in yt_videos %}
         <div class="flex text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
             <dev class="flex md:h-80 md:w-96">
-                    <iframe class="flex flex-1"
+                    <iframe class="flex flex-1 overflow-hidden"
                         src="{{ video_url }}">
                     </iframe>
             </dev>
