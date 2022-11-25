@@ -6,7 +6,6 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
 
 ## What you can find here?
 
-  - Use of models
   - Template design and re-usability of base templates/components
   - Views requests and responses (handling API, models and user requests)
   - Url pathing
@@ -15,7 +14,8 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
   - TailwindCSS template design and config
   - Responsive design with Tailwind
   - Logging in Django
-  - Connecting to API
+  - Connecting to APIs
+  - Asyncio and aiohttp
   - Web scraping
   - Deployment config to Heroku (with django-on-heroku and Whitenoise)
   - Heroku bash commands in the <a href="https://github.com/himalczyk/himalczyk.io/blob/main/notes.md" target="_blank">notes.md</a>
