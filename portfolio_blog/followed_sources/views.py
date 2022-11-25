@@ -34,11 +34,11 @@ def rp_videos(response):
     return render(response, "followed_sources/videos.html", blog_post)
 
 
-def yt_video_index(response):
+async def yt_video_index(response):
     """Videos sub-page in followed sources content page"""
     yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
     try:
-        yt_videos = yt_api.get_youtube_urls()
+        yt_videos = await yt_api.get_youtube_urls()
     except:
         yt_videos = "WARNING"
     video = {
