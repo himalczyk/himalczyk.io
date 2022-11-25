@@ -1,5 +1,6 @@
-"""Module that is fetching the latest videos from pre-defined followed channel ids"""
+from config import YT_API_KEY
 
+#!/usr/bin/python
 
 import requests
 import aiohttp

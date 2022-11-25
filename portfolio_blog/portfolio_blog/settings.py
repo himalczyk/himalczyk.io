@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING
+# SECURITY WARNING settings
 load_dotenv()
 SECRET_KEY=os.getenv('SECRET_KEY')
 DEBUG = False
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'portfolio',
     'tutorial',
-    'api',
+    'followed_sources',
 ]
 
 MIDDLEWARE = [

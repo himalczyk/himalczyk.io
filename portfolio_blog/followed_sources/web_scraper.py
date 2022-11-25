@@ -2,7 +2,7 @@
 
 from bs4 import BeautifulSoup
 import requests
-from api.config import RP_BASE_URL
+from followed_sources.config import RP_BASE_URL
 # testing
 # from config import RP_BASE_URL
 

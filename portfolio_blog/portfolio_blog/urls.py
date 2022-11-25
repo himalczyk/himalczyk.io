@@ -10,7 +10,7 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path("", include("portfolio.urls")),
     path("", include("tutorial.urls")),
-    path("", include("api.urls"))
+    path("", include("followed_sources.urls"))
 ]
 
 if settings.DEBUG:
