@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from api.youtube_api import YoutubeApi
-from api.config import YT_BASE_URL, YOUTUBE_CHANNELS, RP_PODCAST_BASE_URL
-from api.web_scraper import scrape_rp_latest_tutorial, scrape_rp_podcast, scrape_latest_rp_podcast_episode
+from followed_sources.youtube_api import YoutubeApi
+from followed_sources.config import YT_BASE_URL, YOUTUBE_CHANNELS, RP_PODCAST_BASE_URL
+from followed_sources.web_scraper import scrape_rp_latest_tutorial, scrape_rp_podcast, scrape_latest_rp_podcast_episode
 
 
-def api_home(response):
+def followed_sources_home(response):
     """Followed sources content main page -> Real Python Article sub view"""
     rp_post_uri = scrape_rp_latest_tutorial()[1]
     rp_post_image = str(scrape_rp_latest_tutorial()[0])
@@ -16,7 +16,22 @@ def api_home(response):
         "title" : rp_post_title,
         "description" : rp_post_description,
     }
-    return render(response, "api/api_home.html", blog_post)
+    return render(response, "followed_sources/followed_sources_home.html", blog_post)
+
+
+def rp_videos(response):
+    """Real Python videos fetching sub-page re-direction"""
+    rp_post_uri = scrape_rp_latest_tutorial()[1]
+    rp_post_image = str(scrape_rp_latest_tutorial()[0])
+    rp_post_title = str(scrape_rp_latest_tutorial()[2])
+    rp_post_description = str(scrape_rp_latest_tutorial()[3])
+    blog_post = {
+        "image" : rp_post_image,
+        "uri" : rp_post_uri,
+        "title" : rp_post_title,
+        "description" : rp_post_description,
+    }
+    return render(response, "followed_sources/videos.html", blog_post)
 
 
 def yt_video_index(response):
@@ -29,7 +44,7 @@ def yt_video_index(response):
     video = {
         "yt_videos" : yt_videos,
     }
-    return render(response, "api/yt_video_index.html", video)
+    return render(response, "followed_sources/yt_video_index.html", video)
 
 
 def podcasts(response):
@@ -46,4 +61,4 @@ def podcasts(response):
         "alt" : latest_episode_title,
         "description" : latest_episode_description,
     }
-    return render(response, "api/podcasts.html", podcast)
+    return render(response, "followed_sources/podcasts.html", podcast)
