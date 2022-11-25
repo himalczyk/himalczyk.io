@@ -2,6 +2,12 @@
 
 
 import requests
+import aiohttp
+import asyncio
+import time
+import platform
+if platform.system()=='Windows':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -10,6 +16,7 @@ import os
 
 YT_API_KEY = os.getenv('YT_API_KEY')
 
+
 class YoutubeApi():
     """A class to retrieve and create direct video urls from latest published videos for channels"""
     def __init__(self, yt_base_url: str, yt_channels: list):
@@ -17,14 +24,27 @@ class YoutubeApi():
         self.yt_channels = yt_channels
         
         
-    def get_youtube_urls(self) -> list:
+    async def get_youtube_urls(self) -> list:
         """Handler function to provide the direct youtube urls list"""
-        video_ids = self.get_latest_youtube_channel_videos(self.yt_channels)
+        # video_ids = self.get_latest_youtube_channel_videos(self.yt_channels)
+        video_ids = await self.main(self.yt_channels)
         direct_video_urls = self.create_youtube_direct_video_url(video_ids)
         
         return direct_video_urls
 
 
+    def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
+        """Get latest two video identifiers from pre-defined youtube channel list"""
+        video_ids = []
+        for youtube_channel_id in youtube_channel_ids:
+            yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
+            response = yt_channel_video.json()
+            for i in response['items']:
+                video_ids.append(i['id']['videoId'])
+            
+        return video_ids
+    
+    
     def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
         """Get latest two video identifiers from pre-defined youtube channel list"""
         video_ids = []
@@ -43,3 +63,16 @@ class YoutubeApi():
         for video_id in video_ids:
             video_urls.append(f'{self.yt_base_url}{video_id}')
         return video_urls
+    
+    
+    async def get(self, url, session):
+        async with session.get(url=url) as response:
+            resp = await response.json()
+            return resp['items'][0]['id']['videoId']
+        
+
+    async def main(self, YOUTUBE_CHANNELS: list) -> list:
+        async with aiohttp.ClientSession() as session:
+            urls = [f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1' for youtube_channel_id in YOUTUBE_CHANNELS]
+            video_ids = await asyncio.gather(*[self.get(url, session) for url in urls])
+            return video_ids
