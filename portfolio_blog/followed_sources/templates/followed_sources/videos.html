@@ -1,15 +1,26 @@
-{% extends "portfolio/base.html" %}
+{% extends "followed_sources/followed_sources_home.html" %}
 {% block content %}
 {% include "followed_sources/redirect_buttons.html"%}
-	<div class="flex flex-row gap-2 mx-10">
-		<div class="w-auto h-full md:w-1/2 text-center bg-gray-800 rounded-lg border shadow-md dark:bg-gray-800 dark:border-sky-500 border-sky-500">
-			<h2 class="py-2 mx-4 text-left text-2xl text-sky-400 dark:text-sky-400 hover:text-white font-mono"><a href={{ uri }} target="_blank">{{ title }}</h2></a>
-			<div class="mx-4">
-				<a href={{uri}} target="_blank">
-					<img src= "{{ image }}" alt="{{ title }}"/>
-				</a>
-			</div>
-			<p class="py-4 px-2 md:px-4 text-justify text-gray-200 sm:text-lg dark:text-gray-200">{{ description }}</br></br>© 2022 Real Python</p>
-		</div>
-	</div>
+    <div class="flex flex-row flex-wrap gap-5 mx-10">
+    {% if 'WARNING' in yt_videos %}
+        <div class="flex flex-col w-auto h-1/3 text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
+            <p class="text-gray-200">Here should be videos, but... My Youtube API free plan reached the limit of requests per day :(</p></br>
+            <h2 class="text-gray-200 text-yellow-300 dark:text-yellow-300">My recommended YouTube channels</h2></br>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/Coreyms</a>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/ArjanCodes</a>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/Freecodecamp</a>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/TechWithTim</a>
+            </div>
+    {% else %}
+    {% for video_url in yt_videos %}
+        <div class="flex text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
+            <dev class="flex md:h-80 md:w-96">
+                    <iframe class="flex flex-1 overflow-hidden"
+                        src="{{ video_url }}">
+                    </iframe>
+            </dev>
+        </div>
+    {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}
