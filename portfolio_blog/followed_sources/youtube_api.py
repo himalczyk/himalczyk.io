@@ -27,34 +27,10 @@ class YoutubeApi():
     async def get_youtube_urls(self) -> list:
         """Handler function to provide the direct youtube urls list"""
         # video_ids = self.get_latest_youtube_channel_videos(self.yt_channels)
-        video_ids = await self.main(self.yt_channels)
+        video_ids = await self.get_latest_youtube_channel_videos(self.yt_channels)
         direct_video_urls = self.create_youtube_direct_video_url(video_ids)
         
         return direct_video_urls
-
-
-    def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
-        """Get latest two video identifiers from pre-defined youtube channel list"""
-        video_ids = []
-        for youtube_channel_id in youtube_channel_ids:
-            yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
-            response = yt_channel_video.json()
-            for i in response['items']:
-                video_ids.append(i['id']['videoId'])
-            
-        return video_ids
-    
-    
-    def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
-        """Get latest two video identifiers from pre-defined youtube channel list"""
-        video_ids = []
-        for youtube_channel_id in youtube_channel_ids:
-            yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
-            response = yt_channel_video.json()
-            for i in response['items']:
-                video_ids.append(i['id']['videoId'])
-            
-        return video_ids
 
 
     def create_youtube_direct_video_url(self, video_ids: list) -> list:
@@ -65,14 +41,41 @@ class YoutubeApi():
         return video_urls
     
     
-    async def get(self, url, session):
-        async with session.get(url=url) as response:
-            resp = await response.json()
-            return resp['items'][0]['id']['videoId']
-        
-
-    async def main(self, YOUTUBE_CHANNELS: list) -> list:
+    async def get_latest_youtube_channel_videos(self, YOUTUBE_CHANNELS: list) -> list:
+        """Concurrent youtube api calls to get latest video'ids for the provided list of Youtube Channel ids"""
         async with aiohttp.ClientSession() as session:
             urls = [f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1' for youtube_channel_id in YOUTUBE_CHANNELS]
             video_ids = await asyncio.gather(*[self.get(url, session) for url in urls])
             return video_ids
+    
+    
+    async def get(self, url, session):
+        """Getter function for the get_latest_youtube_channel_videos async"""
+        async with session.get(url=url) as response:
+            resp = await response.json()
+            return resp['items'][0]['id']['videoId']
+        
+        
+        
+    # def _backup_get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
+    #     """Get latest two video identifiers from pre-defined youtube channel list"""
+    #     video_ids = []
+    #     for youtube_channel_id in youtube_channel_ids:
+    #         yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
+    #         response = yt_channel_video.json()
+    #         for i in response['items']:
+    #             video_ids.append(i['id']['videoId'])
+            
+    #     return video_ids
+    
+    
+    # def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
+        # """Get latest two video identifiers from pre-defined youtube channel list"""
+        # video_ids = []
+        # for youtube_channel_id in youtube_channel_ids:
+        #     yt_channel_video = requests.get(f'https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1')
+        #     response = yt_channel_video.json()
+        #     for i in response['items']:
+        #         video_ids.append(i['id']['videoId'])
+            
+        # return video_ids
