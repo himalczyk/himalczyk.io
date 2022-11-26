@@ -19,7 +19,7 @@ def followed_sources_home(response):
     return render(response, "followed_sources/followed_sources_home.html", blog_post)
 
 
-def rp_videos(response):
+def rp_articles(response):
     """Real Python videos fetching sub-page re-direction"""
     rp_post_uri = scrape_rp_latest_tutorial()[1]
     rp_post_image = str(scrape_rp_latest_tutorial()[0])
@@ -31,7 +31,7 @@ def rp_videos(response):
         "title" : rp_post_title,
         "description" : rp_post_description,
     }
-    return render(response, "followed_sources/videos.html", blog_post)
+    return render(response, "followed_sources/articles.html", blog_post)
 
 
 async def yt_video_index(response):
@@ -44,7 +44,7 @@ async def yt_video_index(response):
     video = {
         "yt_videos" : yt_videos,
     }
-    return render(response, "followed_sources/yt_video_index.html", video)
+    return render(response, "followed_sources/videos.html", video)
 
 
 def podcasts(response):
