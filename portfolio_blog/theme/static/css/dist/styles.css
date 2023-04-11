@@ -1584,11 +1584,6 @@ select {
     color: rgb(217 70 239 / var(--tw-text-opacity));
   }
 
-  .dark\:text-gainsboro {
-    --tw-text-opacity: 1;
-    color: rgb(220 220 220 / var(--tw-text-opacity));
-  }
-
   .dark\:text-slate-200 {
     --tw-text-opacity: 1;
     color: rgb(226 232 240 / var(--tw-text-opacity));
