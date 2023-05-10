@@ -9,7 +9,7 @@ RP_BASE_URL = 'https://realpython.com'
 RP_PODCAST_BASE_URL = 'https://realpython.com/podcasts/rpp/'
 
 
-YOUTUBE_CHANNELS = ['UC8butISFwT-Wl7EV0hUK0BQ', 'UCVhQ2NnY5Rskt6UjCUkJ_DA', 'UC4JX40jDee_tINbkjycV4Sg', 'UCCezIgC97PvUuR4_gbFUs5g']
+YOUTUBE_CHANNELS = ['UC8butISFwT-Wl7EV0hUK0BQ', 'UCVhQ2NnY5Rskt6UjCUkJ_DA', 'UCZgt6AzoyjslHTC9dz0UoTw', 'UCCezIgC97PvUuR4_gbFUs5g']
 
 # YOUTUBE_CHANNELS = {
 #     'FreeCodeCamp' : 'UC8butISFwT-Wl7EV0hUK0BQ',
