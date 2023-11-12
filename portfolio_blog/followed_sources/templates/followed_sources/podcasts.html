@@ -1,4 +1,4 @@
-{% extends "followed_sources/followed_sources_home.html" %}
+{% extends "followed_sources/articles_and_home.html" %}
 {% block content %}
 {% include "followed_sources/redirect_buttons.html"%}
     <div class="flex flex-row gap-2 mx-10">
@@ -12,7 +12,7 @@
         <a href={{uri}} target="_blank">
 			<h2 class="py-2 mx-4 text-left text-2xl text-sky-400 dark:text-sky-400 hover:text-white font-mono"><a href={{ uri }} target="_blank">Latest episode: {{ alt }}</h2></a>
         </a>
-			<p class="py-2 mx-4 text-justify text-gray-200 sm:text-lg dark:text-gray-200">© 2022 Real Python</p>
+			<p class="py-2 mx-4 text-justify text-gray-200 sm:text-lg dark:text-gray-200">© {{current_year}} Real Python</p>
 		</div>
 	</div>
 {% endblock %}

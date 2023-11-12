@@ -1,4 +1,4 @@
-{% extends "followed_sources/followed_sources_home.html" %}
+{% extends "followed_sources/articles_and_home.html" %}
 {% block content %}
 {% include "followed_sources/redirect_buttons.html"%}
     <div class="flex flex-row flex-wrap gap-5 mx-10">
@@ -7,9 +7,9 @@
             <p class="text-gray-200">Here should be videos, but... My Youtube API free plan reached the limit of requests per day :(</p></br>
             <h2 class="text-gray-200 text-yellow-300 dark:text-yellow-300">My recommended YouTube channels</h2></br>
             <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/Coreyms</a>
-            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/ArjanCodes</a>
-            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/Freecodecamp</a>
-            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Coreyms" target="_blank">https://www.youtube.com/c/TechWithTim</a>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/ArjanCodes" target="_blank">https://www.youtube.com/c/ArjanCodes</a>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/Freecodecamp" target="_blank">https://www.youtube.com/c/Freecodecamp</a>
+            <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/c/ByteByteGo" target="_blank">https://www.youtube.com/c/ByteByteGo</a>
             </div>
     {% else %}
     {% for video_url in yt_videos %}

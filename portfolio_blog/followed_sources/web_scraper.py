@@ -1,13 +1,15 @@
 """This is a module having scraping data from real python blog"""
 
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 from followed_sources.config import RP_BASE_URL
+
 # testing
 # from config import RP_BASE_URL
 
 page = requests.get(RP_BASE_URL)
-rp_podcast_page = requests.get(RP_BASE_URL + '/podcasts/rpp/')
+rp_podcast_page = requests.get(RP_BASE_URL + "/podcasts/rpp/")
+
 
 # passing in page.content instead of page.text to avoid problem with character encoding.
 def scrape_rp_latest_tutorial():
@@ -21,7 +23,8 @@ def scrape_rp_latest_tutorial():
     # alt = results.find("img")["alt"]
     title = results.find("h2").text.strip()
     description = results.find("p").text.strip()
-    return image, uri, title, description
+    return {"image": image, "uri": uri, "title": title, "description": description}
+
 
 def scrape_rp_podcast():
     """Scraping the main rp podcast webpage"""
@@ -29,6 +32,7 @@ def scrape_rp_podcast():
     podcast_image = soup.find("img", class_="card-img-top")
     image = podcast_image["src"]
     return image
+
 
 def scrape_latest_rp_podcast_episode():
     """Scraping the latest rp podcast episode title and uri"""
@@ -38,4 +42,4 @@ def scrape_latest_rp_podcast_episode():
     uri = last_ep.find("a")["href"]
     uri = RP_BASE_URL + uri
     title = last_ep.find("a").text.strip()
-    return title, uri, description
+    return {"title": title, "uri": uri, "description": description}

@@ -1,37 +1,25 @@
 from django.shortcuts import render
+from followed_sources.config import RP_PODCAST_BASE_URL, YOUTUBE_CHANNELS, YT_BASE_URL
+from followed_sources.utils import current_year
+from followed_sources.web_scraper import (
+    scrape_latest_rp_podcast_episode,
+    scrape_rp_latest_tutorial,
+    scrape_rp_podcast,
+)
 from followed_sources.youtube_api import YoutubeApi
-from followed_sources.config import YT_BASE_URL, YOUTUBE_CHANNELS, RP_PODCAST_BASE_URL
-from followed_sources.web_scraper import scrape_rp_latest_tutorial, scrape_rp_podcast, scrape_latest_rp_podcast_episode
-
-
-def followed_sources_home(response):
-    """Followed sources content main page -> Real Python Article sub view"""
-    rp_post_uri = scrape_rp_latest_tutorial()[1]
-    rp_post_image = str(scrape_rp_latest_tutorial()[0])
-    rp_post_title = str(scrape_rp_latest_tutorial()[2])
-    rp_post_description = str(scrape_rp_latest_tutorial()[3])
-    blog_post = {
-        "image" : rp_post_image,
-        "uri" : rp_post_uri,
-        "title" : rp_post_title,
-        "description" : rp_post_description,
-    }
-    return render(response, "followed_sources/followed_sources_home.html", blog_post)
 
 
 def rp_articles(response):
     """Real Python videos fetching sub-page re-direction"""
-    rp_post_uri = scrape_rp_latest_tutorial()[1]
-    rp_post_image = str(scrape_rp_latest_tutorial()[0])
-    rp_post_title = str(scrape_rp_latest_tutorial()[2])
-    rp_post_description = str(scrape_rp_latest_tutorial()[3])
+    rp_post_data = scrape_rp_latest_tutorial()
     blog_post = {
-        "image" : rp_post_image,
-        "uri" : rp_post_uri,
-        "title" : rp_post_title,
-        "description" : rp_post_description,
+        "image": rp_post_data["image"],
+        "uri": rp_post_data["uri"],
+        "title": rp_post_data["title"],
+        "description": rp_post_data["description"],
+        "current_year": current_year,
     }
-    return render(response, "followed_sources/articles.html", blog_post)
+    return render(response, "followed_sources/articles_and_home.html", blog_post)
 
 
 async def yt_video_index(response):
@@ -42,7 +30,7 @@ async def yt_video_index(response):
     except:
         yt_videos = "WARNING"
     video = {
-        "yt_videos" : yt_videos,
+        "yt_videos": yt_videos,
     }
     return render(response, "followed_sources/videos.html", video)
 
@@ -50,15 +38,13 @@ async def yt_video_index(response):
 def podcasts(response):
     """Podcasts sub page in followed sources content page"""
     rp_podcast = scrape_rp_podcast()
-    latest_episode_title = scrape_latest_rp_podcast_episode()[0]
-    latest_episode_url = scrape_latest_rp_podcast_episode()[1]
-    # not used right now
-    latest_episode_description = scrape_latest_rp_podcast_episode()[2]
+    rp_latest_episode_data = scrape_latest_rp_podcast_episode()
     podcast = {
-        "rp_podcast" : rp_podcast,
-        "rp_podcast_base_url" : RP_PODCAST_BASE_URL,
-        "uri" : latest_episode_url,
-        "alt" : latest_episode_title,
-        "description" : latest_episode_description,
+        "rp_podcast": rp_podcast,
+        "rp_podcast_base_url": RP_PODCAST_BASE_URL,
+        "uri": rp_latest_episode_data["uri"],
+        "alt": rp_latest_episode_data["title"],
+        "description": rp_latest_episode_data["description"],
+        "current_year": current_year,
     }
     return render(response, "followed_sources/podcasts.html", podcast)
