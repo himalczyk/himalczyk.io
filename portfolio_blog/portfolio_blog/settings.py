@@ -136,9 +136,9 @@ TAILWIND_CSS_PATH = "css/dist/styles.css"
 # DEV
 # NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 # PROD
-NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
+# NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
 # linux
-# NPM_BIN_PATH = "/usr/local/bin/npm"
+NPM_BIN_PATH = "/usr/local/bin/npm"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
