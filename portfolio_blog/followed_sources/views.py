@@ -7,7 +7,9 @@ from followed_sources.web_scraper import (
     scrape_rp_podcast,
 )
 from followed_sources.youtube_api import YoutubeApi
+import logging
 
+logger = logging.getLogger(__name__)
 
 def rp_articles(response):
     """Real Python videos fetching sub-page re-direction"""
@@ -27,7 +29,8 @@ async def yt_video_index(response):
     yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
     try:
         yt_videos = await yt_api.get_youtube_urls()
-    except:
+    except Exception as e:
+        logger.warning(f"Warning with exception: {e}")
         yt_videos = "WARNING"
     video = {
         "yt_videos": yt_videos,
