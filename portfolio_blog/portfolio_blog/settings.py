@@ -27,12 +27,16 @@ DEBUG = False
 # SECURE_HSTS_SECONDS = 3600
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com", "https://himalczyk.herokuapp.com/"]
-ALLOWED_HOSTS = ["himalczyk.io", "https://himalczyk.io", "", "*"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.herokuapp.com",
+    "https://himalczyk.herokuapp.com/",
+    "https://blog.himalczyk.online/",
+    "https://himalczyk.online/",
+]
 # dev
 # SECRET_KEY = os.getenv("SECRET_KEY_DEV")
 # DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["himalczyk.online", "blog.himalczyk.online"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -136,9 +140,9 @@ TAILWIND_CSS_PATH = "css/dist/styles.css"
 # DEV
 # NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 # PROD
-NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
+# NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
 # linux
-# NPM_BIN_PATH = "/usr/local/bin/npm"
+NPM_BIN_PATH = "/usr/bin/npm"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
