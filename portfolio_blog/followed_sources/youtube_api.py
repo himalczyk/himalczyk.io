@@ -52,30 +52,30 @@ class YoutubeApi:
             resp = await response.json()
             return resp["items"][0]["id"]["videoId"]
 
-    def _backup_get_latest_youtube_channel_videos(
-        self, youtube_channel_ids: list
-    ) -> list:
-        """Get latest two video identifiers from pre-defined youtube channel list"""
-        video_ids = []
-        for youtube_channel_id in youtube_channel_ids:
-            yt_channel_video = requests.get(
-                f"https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1"
-            )
-            response = yt_channel_video.json()
-            for i in response["items"]:
-                video_ids.append(i["id"]["videoId"])
+    # def _backup_get_latest_youtube_channel_videos(
+    #     self, youtube_channel_ids: list
+    # ) -> list:
+    #     """Get latest two video identifiers from pre-defined youtube channel list"""
+    #     video_ids = []
+    #     for youtube_channel_id in youtube_channel_ids:
+    #         yt_channel_video = requests.get(
+    #             f"https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1"
+    #         )
+    #         response = yt_channel_video.json()
+    #         for i in response["items"]:
+    #             video_ids.append(i["id"]["videoId"])
 
-        return video_ids
+    #     return video_ids
 
-    def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
-        """Get latest two video identifiers from pre-defined youtube channel list"""
-        video_ids = []
-        for youtube_channel_id in youtube_channel_ids:
-            yt_channel_video = requests.get(
-                f"https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1"
-            )
-            response = yt_channel_video.json()
-            for i in response["items"]:
-                video_ids.append(i["id"]["videoId"])
+    # def get_latest_youtube_channel_videos(self, youtube_channel_ids: list) -> list:
+    #     """Get latest two video identifiers from pre-defined youtube channel list"""
+    #     video_ids = []
+    #     for youtube_channel_id in youtube_channel_ids:
+    #         yt_channel_video = requests.get(
+    #             f"https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1"
+    #         )
+    #         response = yt_channel_video.json()
+    #         for i in response["items"]:
+    #             video_ids.append(i["id"]["videoId"])
 
-        return video_ids
+    #     return video_ids
