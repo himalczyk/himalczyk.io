@@ -1,6 +1,6 @@
 # himalczyk.io
 
-Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindCSS and Heroku deployment!
+Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindCSS deployed on my VPS!
 
 <a href="https://web.himalczyk.online/" target="_blank">Check out my personal website!</a>
 
@@ -17,9 +17,8 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
   - Connecting to APIs
   - Asyncio and aiohttp
   - Web scraping
-  - Deployment config to Heroku (with django-on-heroku and Whitenoise)
-  - Heroku bash commands in the <a href="https://github.com/himalczyk/himalczyk.io/blob/main/notes.md" target="_blank">notes.md</a>
-  - Postgres database on Heroku
+  - Deployment to VPS with Docker (Whitenoise)
+  - Postgres database
 
 Additional resources:
   - Notes about the whole process in <a href="https://github.com/himalczyk/himalczyk.io/blob/main/notes.md" target="_blank">notes.md</a> file :)
@@ -33,10 +32,6 @@ Additional resources:
 [TailwindCSS docs](https://tailwindcss.com/docs/installation) 
  
 [Whitenoise](http://whitenoise.evans.io/en/stable/django.html) 
- 
-[Django Heroku](https://devcenter.heroku.com/categories/working-with-django) 
-
-[django-on-heroku](https://pypi.org/project/django-on-heroku/)
 
 ## Code quality
 
