@@ -1,0 +1,52 @@
+x-app: &default-app
+  build:
+    context: "."
+  volumes:
+    - ./:/app:cached
+    - node_modules:/app/theme/static_src/node_modules
+  restart: "unless-stopped"
+
+services:
+  web:
+    image: himalczyk/himalczyk.io:himalczyk.io
+    depends_on:
+      - tailwind
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    networks:
+      - himalczyk_default
+
+  tailwind:
+    image: himalczyk/himalczyk.io:himalczyk.io
+    command: "python manage.py tailwind start"
+    tty: true
+    env_file:
+      - .env
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - /root/Caddyfile:/etc/caddy/Caddyfile
+    env_file:
+      - .env
+    networks:
+      - himalczyk_default
+
+volumes:
+  node_modules:
+  caddy_data:
+  caddy_config:
+
+networks:
+  himalczyk_default:
+    driver: overlay
