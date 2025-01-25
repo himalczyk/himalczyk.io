@@ -22,8 +22,6 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.herokuapp.com",
-    "https://himalczyk.herokuapp.com",
     "https://web.himalczyk.online",
     "https://api.himalczyk.online",
     "https://himalczyk.online",
@@ -170,7 +168,3 @@ LOGGING = {
         }
     },
 }
-
-import django_on_heroku
-
-django_on_heroku.settings(locals())
