@@ -2,7 +2,7 @@
 
 Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindCSS and Heroku deployment!
 
-<a href="https://himalczyk.herokuapp.com/" target="_blank">Check out my portfolio website!</a>
+<a href="https://web.himalczyk.online/" target="_blank">Check out my personal website!</a>
 
 ## What you can find here?
 
@@ -48,7 +48,7 @@ You can find some of those here too :)
 
 > **Note**: **Please do your best following the rules:**
 
-1. This is open source, feel free to copy and **use** this code, to modify, play around, learn and create your own portfolio basing on this!
+1. This is open source, feel free to copy and **use** this code, to modify, play around, learn and create your own personal wesbite basing on this!
 2. Please do not use with just exchanging the data.
 
 Following a pre-made code is fine, but the most learning comes from practice and modification, own usage of the functionality or design we want to achieve!

@@ -1,5 +1,3 @@
-version: "3.7"
-
 x-app: &default-app
   build:
     context: "."
@@ -11,9 +9,6 @@ x-app: &default-app
 services:
   web:
     image: himalczyk/himalczyk.io:himalczyk.io
-    secrets:
-      - SECRET_KEY
-      - YT_API_KEY
     depends_on:
       - tailwind
     command: >
@@ -21,6 +16,8 @@ services:
              python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     networks:
       - himalczyk_default
 
@@ -40,6 +37,8 @@ services:
       - caddy_data:/data
       - caddy_config:/config
       - /root/Caddyfile:/etc/caddy/Caddyfile
+    env_file:
+      - .env
     networks:
       - himalczyk_default
 
@@ -47,12 +46,6 @@ volumes:
   node_modules:
   caddy_data:
   caddy_config:
-
-secrets:
-  SECRET_KEY:
-    external: true
-  YT_API_KEY:
-    external: true
 
 networks:
   himalczyk_default:

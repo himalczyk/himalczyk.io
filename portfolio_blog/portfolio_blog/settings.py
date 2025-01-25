@@ -13,30 +13,22 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+from decouple import config
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING settings
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = False
-# SECURE_SSL_REDIRECT = True
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-# SECURE_HSTS_SECONDS = 3600
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+DEBUG = os.getenv("DEBUG")
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
-    "https://himalczyk.herokuapp.com/",
-    "https://blog.himalczyk.online/",
-    "https://himalczyk.online/",
+    "https://himalczyk.herokuapp.com",
+    "https://web.himalczyk.online",
+    "https://api.himalczyk.online",
+    "https://himalczyk.online",
 ]
-# dev
-# SECRET_KEY = os.getenv("SECRET_KEY_DEV")
-# DEBUG = True
-ALLOWED_HOSTS = ["himalczyk.online", "blog.himalczyk.online"]
+ALLOWED_HOSTS = ["himalczyk.online", "web.himalczyk.online"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -88,8 +80,12 @@ WSGI_APPLICATION = "portfolio_blog.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USERNAME"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOSTNAME"),
+        "PORT": config("DB_PORT", cast=int),
     }
 }
 
@@ -136,11 +132,6 @@ INTERNAL_IPS = [
 
 TAILWIND_CSS_PATH = "css/dist/styles.css"
 
-# this is fixing the pathing issue for being able to find node installed on pc and heroku
-# DEV
-# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-# PROD
-# NPM_BIN_PATH = "/app/.heroku/node/bin/npm"
 # linux
 NPM_BIN_PATH = "/usr/bin/npm"
 
