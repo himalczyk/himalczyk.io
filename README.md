@@ -17,7 +17,9 @@ Hello! I'm Dawid and this is my beatiful portfolio built using Django, TailwindC
   - Connecting to APIs
   - Asyncio and aiohttp
   - Web scraping
-  - Deployment to VPS with Docker (Whitenoise)
+  - Deployment to VPS with Docker (Swarm, Stack, Context)
+  - SSL handling with Caddy
+  - Static files handling (Whitenoise)
   - Postgres database
 
 Additional resources:
