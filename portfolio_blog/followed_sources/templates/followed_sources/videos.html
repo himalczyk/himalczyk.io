@@ -16,13 +16,25 @@
             <a class="text-gray-200 mb-2 text-sky-500 dark:text-sky-500" href="https://www.youtube.com/@MelkeyDev" target="_blank">https://www.youtube.com/@MelkeyDev</a>
             </div>
     {% else %}
-    {% for video_url in yt_videos %}
-        <div class="flex text-center bg-gray-800 border-sky-500 rounded-lg border shadow-md sm:p-2 dark:bg-gray-800 dark:border-sky-500">
-            <dev class="flex md:h-80 md:w-96">
-                    <iframe class="flex flex-1 overflow-hidden"
-                        src="{{ video_url }}">
-                    </iframe>
-            </dev>
+    {% for video in yt_videos %}
+        <div class="flex flex-col w-96 bg-gray-800 border-sky-500 rounded-lg border shadow-md dark:bg-gray-800 dark:border-sky-500 overflow-hidden">
+            <h2 class="py-2 px-2 text-left text-xl text-sky-400 dark:text-sky-400 hover:text-white font-mono"><a href={{ video.channel_url }} target="_blank">{{ video.channel_name }}</h2></a>
+            <!-- Video Embed -->
+            <div class="py-2 px-2 w-full aspect-video h-64">
+                <iframe class="w-full h-full"
+                    src="{{ video.url }}"
+                    title="{{ video.title }}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <!-- Video Info -->
+            <div class="py-2 px-2 flex flex-col justify-between">
+                <h2 class="text-left text-sky-400 dark:text-sky-400 hover:text-white font-mono"><a href={{ video.youtube_url }} target="_blank">{{ video.title }}</h2></a>
+                <p class="text-gray-200 text-base">{{ video.description }}</p>
+            </div>
         </div>
     {% endfor %}
     {% endif %}

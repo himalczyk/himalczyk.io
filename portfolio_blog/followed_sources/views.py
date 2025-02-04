@@ -1,5 +1,12 @@
+import logging
+
 from django.shortcuts import render
-from followed_sources.config import RP_PODCAST_BASE_URL, YOUTUBE_CHANNELS, YT_BASE_URL
+from followed_sources.config import (
+    RP_PODCAST_BASE_URL,
+    YOUTUBE_CHANNELS,
+    YT_BASE_URL,
+    YT_VIDEOS_API_LIMIT_REACHED,
+)
 from followed_sources.utils import current_year
 from followed_sources.web_scraper import (
     scrape_latest_rp_podcast_episode,
@@ -7,9 +14,9 @@ from followed_sources.web_scraper import (
     scrape_rp_podcast,
 )
 from followed_sources.youtube_api import YoutubeApi
-import logging
 
 logger = logging.getLogger(__name__)
+
 
 def rp_articles(response):
     """Real Python videos fetching sub-page re-direction"""
@@ -28,14 +35,19 @@ async def yt_video_index(response):
     """Videos sub-page in followed sources content page"""
     yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
     try:
+        logger.info("Fetching YouTube videos")
         yt_videos = await yt_api.get_youtube_urls()
+        logger.debug(f"yt_videos: {yt_videos}")
+
+        if not yt_videos or all(video is None for video in yt_videos):
+            logger.warning("No valid videos returned from API, using fallback data")
+            yt_videos = YT_VIDEOS_API_LIMIT_REACHED
     except Exception as e:
-        logger.warning(f"Warning with exception: {e}")
-        yt_videos = "WARNING"
-    video = {
-        "yt_videos": yt_videos,
-    }
-    return render(response, "followed_sources/videos.html", video)
+        logger.warning(f"YouTube API error, using fallback data. Error: {e}")
+        yt_videos = YT_VIDEOS_API_LIMIT_REACHED
+
+    logger.debug(f"Final video count: {len(yt_videos)}")
+    return render(response, "followed_sources/videos.html", {"yt_videos": yt_videos})
 
 
 def podcasts(response):

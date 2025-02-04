@@ -1,6 +1,7 @@
 """Module that is fetching the latest videos from pre-defined followed channel ids"""
 
 import asyncio
+import logging
 import platform
 
 import aiohttp
@@ -13,6 +14,8 @@ import os
 
 YT_API_KEY = os.getenv("YT_API_KEY")
 
+logger = logging.getLogger(__name__)
+
 
 class YoutubeApi:
     """A class to retrieve and create direct video urls from latest published videos for channels"""
@@ -23,11 +26,8 @@ class YoutubeApi:
 
     async def get_youtube_urls(self) -> list:
         """Handler function to provide the direct youtube urls list"""
-        # video_ids = self.get_latest_youtube_channel_videos(self.yt_channels)
-        video_ids = await self.get_latest_youtube_channel_videos(self.yt_channels)
-        direct_video_urls = self.create_youtube_direct_video_url(video_ids)
-
-        return direct_video_urls
+        videos = await self.get_latest_youtube_channel_videos(self.yt_channels)
+        return videos  # Now returning the full video data list, not just URLs
 
     def create_youtube_direct_video_url(self, video_ids: list) -> list:
         """Create direct video urls list with base url and video id"""
@@ -37,20 +37,40 @@ class YoutubeApi:
         return video_urls
 
     async def get_latest_youtube_channel_videos(self, YOUTUBE_CHANNELS: list) -> list:
-        """Concurrent youtube api calls to get latest video'ids for the provided list of Youtube Channel ids"""
+        """Concurrent youtube api calls to get latest video data for the provided list of Youtube Channel ids"""
         async with aiohttp.ClientSession() as session:
             urls = [
                 f"https://www.googleapis.com/youtube/v3/search?key={YT_API_KEY}&channelId={youtube_channel_id}&part=snippet,id&order=date&maxResults=1"
                 for youtube_channel_id in YOUTUBE_CHANNELS
             ]
-            video_ids = await asyncio.gather(*[self.get(url, session) for url in urls])
-            return video_ids
+            videos = await asyncio.gather(*[self.get(url, session) for url in urls])
+            return videos
 
     async def get(self, url, session):
         """Getter function for the get_latest_youtube_channel_videos async"""
-        async with session.get(url=url) as response:
-            resp = await response.json()
-            return resp["items"][0]["id"]["videoId"]
+        try:
+            async with session.get(url=url) as response:
+                resp = await response.json()
+                logger.debug(f"Response: {resp}")
+                if "items" not in resp or not resp["items"]:
+                    return None
+
+                video = resp["items"][0]
+                channel_id = video["snippet"]["channelId"]
+                video_id = video["id"]["videoId"]
+
+                return {
+                    "url": f"{self.yt_base_url}{video_id}",
+                    "youtube_url": f"https://youtube.com/watch?v={video_id}",
+                    "title": video["snippet"]["title"],
+                    "description": video["snippet"]["description"][:100] + "...",
+                    "channel_name": video["snippet"]["channelTitle"],
+                    "channel_url": f"https://youtube.com/channel/{channel_id}",
+                    "thumbnail": video["snippet"]["thumbnails"]["high"]["url"],
+                }
+        except Exception as e:
+            logger.debug(f"Error fetching video data: {e}")
+            return None
 
     # def _backup_get_latest_youtube_channel_videos(
     #     self, youtube_channel_ids: list

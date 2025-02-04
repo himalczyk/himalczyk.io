@@ -864,6 +864,10 @@ select {
   height: 1rem;
 }
 
+.h-64 {
+  height: 16rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -907,6 +911,10 @@ select {
 
 .w-8 {
   width: 2rem;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .w-auto {
@@ -1122,6 +1130,10 @@ select {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-2 {
@@ -1588,10 +1600,6 @@ select {
 }
 
 @media (min-width: 768px) {
-  .md\:h-80 {
-    height: 20rem;
-  }
-
   .md\:h-auto {
     height: auto;
   }
@@ -1602,10 +1610,6 @@ select {
 
   .md\:w-48 {
     width: 12rem;
-  }
-
-  .md\:w-96 {
-    width: 24rem;
   }
 
   .md\:max-w-xl {

@@ -26,7 +26,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://api.himalczyk.online",
     "https://himalczyk.online",
 ]
-ALLOWED_HOSTS = ["himalczyk.online", "web.himalczyk.online"]
+ALLOWED_HOSTS = ["localhost", "himalczyk.online", "web.himalczyk.online"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -132,6 +132,8 @@ TAILWIND_CSS_PATH = "css/dist/styles.css"
 
 # linux
 NPM_BIN_PATH = "/usr/bin/npm"
+# local
+# NPM_BIN_PATH = "/usr/local/bin/npm"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -141,11 +143,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": (
-                "%(asctime)s [%(process)d] [%(levelname)s] "
-                + "pathname=%(pathname)s lineno=%(lineno)s "
-                + "funcname=%(funcName)s %(message)s"
-            ),
+            "format": "[%(asctime)s] %(levelname)s | %(name)s | %(message)s",
             "datefmt": "%Y-%m-%d %H:%M:%S",
         },
         "simple": {"format": "%(levelname)s %(message)s"},
@@ -162,9 +160,9 @@ LOGGING = {
         },
     },
     "loggers": {
-        "testlogger": {
+        "root": {
             "handlers": ["console"],
-            "level": "INFO",
+            "level": "DEBUG",
         }
     },
 }
