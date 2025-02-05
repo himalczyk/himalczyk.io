@@ -1,6 +1,11 @@
 import logging
+import time
 
+from asgiref.sync import sync_to_async
+from django.core.cache import cache
 from django.shortcuts import render
+from django.utils.decorators import sync_and_async_middleware
+from django.views.decorators.cache import cache_page
 from followed_sources.config import (
     RP_PODCAST_BASE_URL,
     YOUTUBE_CHANNELS,
@@ -33,21 +38,33 @@ def rp_articles(response):
 
 async def yt_video_index(response):
     """Videos sub-page in followed sources content page"""
-    yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
-    try:
-        logger.info("Fetching YouTube videos")
-        yt_videos = await yt_api.get_youtube_urls()
-        logger.debug(f"yt_videos: {yt_videos}")
+    cache_key = "youtube_latest_videos"
+    yt_videos = cache.get(cache_key)
 
-        if not yt_videos or all(video is None for video in yt_videos):
-            logger.warning("No valid videos returned from API, using fallback data")
+    if yt_videos is None:
+        logger.info("Cache miss - fetching fresh data from YouTube API")
+        yt_api = YoutubeApi(YT_BASE_URL, YOUTUBE_CHANNELS)
+        try:
+            logger.info("Fetching YouTube videos")
+            yt_videos = await yt_api.get_youtube_urls()
+            logger.debug(f"yt_videos: {yt_videos}")
+
+            if not yt_videos or all(video is None for video in yt_videos):
+                logger.warning("No valid videos returned from API, using fallback data")
+                yt_videos = YT_VIDEOS_API_LIMIT_REACHED
+        except Exception as e:
+            logger.warning(f"YouTube API error, using fallback data. Error: {e}")
             yt_videos = YT_VIDEOS_API_LIMIT_REACHED
-    except Exception as e:
-        logger.warning(f"YouTube API error, using fallback data. Error: {e}")
-        yt_videos = YT_VIDEOS_API_LIMIT_REACHED
+
+        # Cache the data for 1 hour
+        cache.set(cache_key, yt_videos, 60 * 60)
+    else:
+        logger.info("Cache hit - using cached YouTube data")
 
     logger.debug(f"Final video count: {len(yt_videos)}")
-    return render(response, "followed_sources/videos.html", {"yt_videos": yt_videos})
+    return await sync_to_async(render)(
+        response, "followed_sources/videos.html", {"yt_videos": yt_videos}
+    )
 
 
 def podcasts(response):
